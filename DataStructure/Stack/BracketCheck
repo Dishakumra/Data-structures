@@ -1,0 +1,78 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) 
+	{
+	    Scanner sc=new Scanner(System.in);
+	    int x=sc.nextInt();
+	    for(int i1=0;i1<x;i1++)
+	    {
+	        int flag=0;
+	        Stack<Character> s=new Stack<Character>();
+	        String s1=sc.next();
+	        char a[]=s1.toCharArray();
+	        for(int i=0;i<a.length;i++)
+	        {
+	           if(a[i]=='('||a[i]=='{'||a[i]=='[')
+	           {
+	               s.push(a[i]);
+	           }
+	           else if(a[i]=='}'&&s.isEmpty())
+	           {
+	               flag=1;
+	               break;
+	           }
+	           else if(a[i]==')'&&s.isEmpty())
+	           {
+	               flag=1;
+	               break;
+	           }
+	           else if(a[i]==']'&&s.isEmpty())
+	           {
+	               flag=1;
+	               break;
+	           }
+	           else if(a[i]==')'&&s.peek()=='(')
+	           {
+	               s.pop();
+	           }
+	           	else if(a[i]=='}'&&s.peek()=='{')
+	           {
+	               s.pop();
+	           }
+	           else if(a[i]==']'&&s.peek()=='[')
+	           {
+	               s.pop();
+	           }
+	           else if(a[i]==')'&&s.peek()!='(')
+	           {
+	               flag=1;
+	               break;
+	           }
+	           	else if(a[i]=='}'&&s.peek()=='{')
+	           {
+	               flag=1;
+	               break;
+	           }
+	           else if(a[i]==']'&&s.peek()=='[')
+	           {
+	               flag=1;
+	               break;
+	           }
+	        }
+	        if(flag==0&&s.isEmpty())
+	        {
+	            System.out.println("balanced");
+	        }
+	        else
+	        {
+	            System.out.println("not balanced");
+	        }
+	    }
+	    
+	  }
+}
